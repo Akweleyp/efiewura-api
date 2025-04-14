@@ -18,7 +18,7 @@ const listingSchema = new Schema(
     available: { type: Boolean, default: true },
     category: {
       type: String,
-      enum: ["1 Bedroom", "2 Bedroom", "Single room self-contain"],
+      enum: ["1 Bedroom", "2 Bedroom", "Single room self-contain", "Chamber and hall"],
       required: true,
     },
   },
