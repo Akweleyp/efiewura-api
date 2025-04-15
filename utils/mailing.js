@@ -2,7 +2,7 @@ import { createTransport } from "nodemailer";
 import "dotenv/config";
 
 export const mailTransporter = createTransport({
-  host: "smtp@gmail.com",
+  host: "smtp.gmail.com",
   host: 587,
   secure: false,
   auth: {
