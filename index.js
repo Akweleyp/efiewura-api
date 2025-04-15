@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import listingRouter from "./router/listingroutes.js";
-import userRouter from './router/userroutes.js'
+import userRouter from "./router/userroutes.js";
                                  
 import mongoose from "mongoose";
 

@@ -7,9 +7,7 @@ export const registerUserValidator = Joi.object({
   lastName: Joi.string()
     .regex(/^[A-Za-z]+$/)
     .required(),
-  email: Joi.string()
-    .email({ minDomainSegments: 2, tlds: { allow: [".com", ".net"] } })
-    .required(),
+  email: Joi.string().email({ tlds: { allow: ['com', 'org', 'net'] } }).required(),
   password: Joi.string().required(),
   confirmPassword: Joi.string().valid(Joi.ref("password")),
 

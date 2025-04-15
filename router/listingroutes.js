@@ -11,8 +11,8 @@ import {
   updateListing,
   viewDeletedListings,
 } from "../controller/listingcontroller.js";
-import { isAuthenticated, isAuthorized } from "../middleware/auth";
-import { listingPicturesUpload } from "../middleware/upload";
+import { isAuthenticated, isAuthorized } from "../middleware/auth.js";
+import { listingPicturesUpload } from "../middleware/upload.js";
 
 const listingRouter = Router();
 // Create listing routes

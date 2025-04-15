@@ -21,3 +21,7 @@ userRouter.patch("/users/:id", updateUser);
 
 // Get all users
 userRouter.get("/users", getAllUsers);
+
+
+// Export router
+export default userRouter;

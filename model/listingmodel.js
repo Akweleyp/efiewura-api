@@ -12,7 +12,7 @@ const listingSchema = new Schema(
     location: { type: String, required: true },
     // numberOfRooms: {type:Number, required:true},
     amenities: { type: String, required: true },
-    userId: { type: Types.objectId, required: true, ref: user },
+    userId: { type: Types.ObjectId, required: true, ref: "User" },
     isDeleted: { type: Boolean, default: false },
     isAvailable: { type: Boolean, default: true },
     category: {
