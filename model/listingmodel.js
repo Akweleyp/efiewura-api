@@ -1,4 +1,3 @@
-
 import { Schema, model, Types } from "mongoose";
 
 import normalize from "normalize-mongoose";
@@ -18,10 +17,15 @@ const listingSchema = new Schema(
     isAvailable: { type: Boolean, default: true },
     category: {
       type: String,
-      enum: ["1 Bedroom", "2 Bedroom", "Single room self-contain", "Chamber and hall"],
-      required: true
+      enum: [
+        "1 Bedroom",
+        "2 Bedroom",
+        "Single room self-contain",
+        "Chamber and hall",
+      ],
+      required: true,
     },
-    deletedAt: {type: Date, default:null},
+    deletedAt: { type: Date, default: null },
   },
   {
     timestamps: true,

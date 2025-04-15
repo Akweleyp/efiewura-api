@@ -10,7 +10,12 @@ export const listingValidator = Joi.object({
   amenities: Joi.string().required(),
   category: Joi.string()
     .required()
-    .valid("1 Bedroom", "2 Bedroom", "Single room self-contain", "Chamber and hall"),
+    .valid(
+      "1 Bedroom",
+      "2 Bedroom",
+      "Single room self-contain",
+      "Chamber and hall"
+    ),
 });
 
 // validator to update listing
