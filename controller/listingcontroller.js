@@ -27,7 +27,7 @@ export const addListing = async(req,res) => {
     if(error.name === "MongooseError") {
         return res.status(409).json({message: "Request not successful, Internal server error", status:"error"})
     }
-    return  res.json({message: "Request not successful, kindly reload the page again", status: "error"})
+    return  res.json({message: "Request unsuccessful, kindly reload the page again", status: "error"})
    }
 };
 
@@ -43,6 +43,7 @@ export const getListings = async(req, res) => {
      if(result.length === 0) {
          return res.status(404).json({message: "No listings found"})
      }
+     
      return res.json({
          message: "Here are your listings",
          data: result
@@ -142,6 +143,39 @@ export const updateListing = async(req, res) => {
         
     }
 }
+
+
+// Put/ Replace Listing
+export const replaceListing = async(req, res) => {
+try {
+    
+        const {error, value} = listingIdValidator.validate(req.params, {abortEarly:false})
+        if(error){
+            return res.status(400).json({message: "Validation Unsuccessful", status:"error"})
+        }
+    
+        const confirmListing = await ListingModel.findById(req.params.id)
+        if(!confirmListing){
+            return res.status(404).json({message:"Listing not found"})
+        }
+        if(confirmListing.userId.toString() !==req.auth.id){
+            return res.status(403).json({message:"You are not authorized to update this lisitng"})
+        }
+    
+        const result = await ListingModel.findByIdAndUpdate(req.params.id, value, {new:true})
+        if(!result){
+            return res.status(404).json("Listing not found")
+        }
+        res.status(201).json({
+            message: "Listing successfully updated",
+            data:result
+        })
+        
+} catch (error) {
+    return res.json({message: "Request unsuccessful, kindly refresh your application"})
+    
+}
+};
  
 // DELETE  listing [Add logic to save all activity log ]
 

@@ -1,4 +1,4 @@
-import { required } from "joi";
+
 import { Schema, model, Types } from "mongoose";
 
 import normalize from "normalize-mongoose";
@@ -15,12 +15,13 @@ const listingSchema = new Schema(
     amenities: { type: String, required: true },
     userId: { type: Types.objectId, required: true, ref: user },
     isDeleted: { type: Boolean, default: false },
-    available: { type: Boolean, default: true },
+    isAvailable: { type: Boolean, default: true },
     category: {
       type: String,
       enum: ["1 Bedroom", "2 Bedroom", "Single room self-contain", "Chamber and hall"],
-      required: true,
+      required: true
     },
+    deletedAt: {type: Date, default:null},
   },
   {
     timestamps: true,
