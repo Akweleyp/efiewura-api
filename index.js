@@ -1,20 +1,40 @@
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
 import listingRouter from "./router/listingroutes.js";
 import userRouter from "./router/userroutes.js";
                                  
-import mongoose from "mongoose";
 
 
 
-// database connection
-
-await mongoose.connect(process.env.MONGO_URI);
+// Load environment Variables 
+dotenv.config();
 
 
 // Create express app
 
 const app = express();
+
+
+
+// database connection
+
+ const connectToDatabase = async() =>{
+
+ try {
+   await mongoose.connect(process.env.MONGO_URI, {
+     useNewUrlParser: true,
+     useUnifiedTopology: true,
+   })
+   console.log("Database connected successfully");
+ } catch (error) {
+  console.error("Database connection failed:", error);
+  process.exit(1)}
+};
+
+
 
 // Use middlewares
 app.use(express.json());
