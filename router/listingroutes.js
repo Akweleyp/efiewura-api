@@ -39,7 +39,7 @@ listingRouter.patch(
 
 // Replace listings
 listingRouter.put(
-  "/lsitings/:id",
+  "/listings/:id",
   isAuthenticated,
   isAuthorized(["landlord", "admin"]),
   replaceListing
