@@ -302,7 +302,8 @@ export const viewDeletedListings = async (req, res) => {
       return res.status(404).json({ message: "No deleted listings found" });
     }
 
-    res.status(201).json({ message: " Here are your deleted listings" });
+    res.status(201).json({ 
+      message: " Here are your deleted listings", data:result });
   } catch (error) {
     return res
       .status(404)
