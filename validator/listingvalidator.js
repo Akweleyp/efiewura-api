@@ -31,5 +31,5 @@ export const updateListingValidator = Joi.object({
 // validator listing id validator
 
 export const listingIdValidator = Joi.object({
-  id: Joi.string().required(),
+  id: Joi.string().required()
 });

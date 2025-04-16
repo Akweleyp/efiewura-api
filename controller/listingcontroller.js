@@ -242,12 +242,12 @@ export const deleteListing = async (req, res) => {
         .json({ message: "Validation unsuccessful", status: "error" });
     }
 
-    const confirmListing = await ListingModel.findById(req.params.id);
+    const confirmListing = await ListingModel.findById(value.id);
     if (!confirmListing) {
       return res.status(400).json({ message: "Listing not found" });
     }
 
-    if (confirmListing.userId.toString() !== req.auth.id) {
+    if (!req.auth || confirmListing.userId.toString() !== req.auth.id) {
       return res
         .status(403)
         .json({ message: "You are not authorized to delete this listing" });
@@ -263,13 +263,14 @@ export const deleteListing = async (req, res) => {
     }
 
     res.status(202).json({
-      message: "Lsiting deleted",
+      message: "Listing deleted",
       data: result,
       status: "success",
     });
   } catch (error) {
+    console.error("Delete listing error:",error);
     return res
-      .status(404)
+      .status(500)
       .json({
         message: "Request unsuccessful, kindly refresh your application",
         status: "error",

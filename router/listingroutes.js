@@ -53,14 +53,14 @@ listingRouter.get(
   viewDeletedListings
 );
 
-// View only one liting or get listing by id
+// View only one listing or get listing by id
 listingRouter.get("/listings/:id", getOneListing);
 
-// View lsitings by a specific landlord
+// View listings by a specific landlord
 listingRouter.get("/listings/user/:userId", listingsByUser);
 
 // Delete listings
-listingRouter.delete("/listings/:id", deleteListing);
+listingRouter.delete("/listings/:id",isAuthenticated, isAuthorized(["landlord", "admin"]), deleteListing);
 
 // Restore a mistakenly deleted listing using put
 listingRouter.put(
