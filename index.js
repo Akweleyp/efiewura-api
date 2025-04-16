@@ -34,7 +34,8 @@ const app = express();
   process.exit(1)}
 };
 
-
+// Connect to the database 
+connectToDatabase();
 
 // Use middlewares
 app.use(express.json());
