@@ -22,6 +22,11 @@ const app = express();
 // database connection
 
  const connectToDatabase = async() =>{
+  const uri = process.env.MONGO_URI
+
+  if (!uri){
+    console.error("MongoDB URI is not defined! Check your environment variables")
+  }
 
  try {
    await mongoose.connect(process.env.MONGO_URI, {
