@@ -319,7 +319,11 @@ export const restorelistings = async (req, res) => {
   try {
     const confirmListing = await ListingModel.findById(req.params.id);
 
-    if (!confirmListing.userId.toString() !== req.auth.id) {
+if(!confirmListing){
+  return res.status(404).json({message: "Listing not found"})
+}
+
+    if (confirmListing.userId.toString() !== req.auth.id) {
       return res
         .staus(403)
         .json({ message: "You are not authorised to restore listing" });
@@ -339,6 +343,7 @@ export const restorelistings = async (req, res) => {
       status: "success",
     });
   } catch (error) {
+    console.error("Restore listing error:", error);
     return res.json({
       message: "Request not successful, kindly refresh you application",
       status: "error",
