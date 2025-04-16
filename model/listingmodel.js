@@ -8,7 +8,7 @@ const listingSchema = new Schema(
     name: { type: String, required: true, unique: true },
     price: { type: Number, required: true },
     description: { type: String, required: true },
-    pictures: { type: String, required: true },
+    pictures: [ {type: String, required: true }],
     location: { type: String, required: true },
     // numberOfRooms: {type:Number, required:true},
     amenities: { type: String, required: true },

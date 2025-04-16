@@ -5,7 +5,7 @@ export const listingValidator = Joi.object({
   name: Joi.string().required(),
   price: Joi.number().required(),
   description: Joi.string().required(),
-  pictures: Joi.array().items(Joi.string().required()),
+  pictures:Joi.array().items(Joi.string().required()),
   location: Joi.string().required(),
   amenities: Joi.string().required(),
   category: Joi.string()
