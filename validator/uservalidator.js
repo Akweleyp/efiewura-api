@@ -12,7 +12,7 @@ export const registerUserValidator = Joi.object({
   confirmPassword: Joi.string().valid(Joi.ref("password")),
 
   // role is optional, it is set to default user if it is not indicated or selected.
-  role: Joi.string().valid("user", "landlord").optional(),
+  role: Joi.string().valid("user", "tenant", "landlord").optional(),
 }).with("password", "confirmPassword");
 
 export const loginUserValidator = Joi.object({
