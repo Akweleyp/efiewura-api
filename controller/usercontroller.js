@@ -40,7 +40,7 @@ export const registerUser = async (req, res) => {
 
   // Generate access token for user
   const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
-  res.status(201).json({ newUser, token });
+   return res.status(201).json({ newUser, token });
 
   // Save user information in the database (not necessary to do this becasue of previous step)
   await newUser.save();
@@ -54,7 +54,7 @@ export const registerUser = async (req, res) => {
   })
 
   //  Return response
-  res.status(201).json("User registered successfully");
+  return res.status(201).json({message: "User registered successfully"})
 };
 
 // Login users( tenant / landlord)
@@ -87,7 +87,7 @@ export const loginUser = async (req, res) => {
       expiresIn: "24h",
     });
     // Return response
-    res.status(200).json({
+     return res.status(200).json({
       message: "Login successful",
       token,
       user: {
@@ -130,7 +130,7 @@ export const updateUser = async (req, res) => {
     // Return the response without password ( this will make the person't details show without their password)
 
     const { password, ...userWithoutPassword } = updateUser.toObject();
-    res
+     return res
       .status(200)
       .json({ message: "Update successful", data: userWithoutPassword });
   } catch (error) {
@@ -145,8 +145,8 @@ export const updateUser = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const users = await UserModel.find();
-    res.json(users);
+     return res.json(users);
   } catch (error) {
-    res.json({ message: "Unable to get users" });
+     return res.json({ message: "Unable to get users" });
   }
 };
