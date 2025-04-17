@@ -11,7 +11,7 @@ const userSchema = new Schema(
     password: { type: String, required: true },
     role: {
       type: String,
-      enum: ["user", "tenant","landlord", "admin"],
+      enum: ["tenant","landlord", "admin"],
       // set the default role to user if not specified
       default: "user",
     },
