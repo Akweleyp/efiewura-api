@@ -50,8 +50,8 @@ export const registerUser = async (req, res) => {
     from: process.env.USER_GMAIL,
     to: value.email,
     subject: "Welcome to Efiewura",
-    html: emailMessage.replace("{{lastname}}", value.lastname),
-  });
+    html: emailMessage.replace("{{lastName}}", value.lastName)
+  })
 
   //  Return response
   res.status(201).json("User registered successfully");
