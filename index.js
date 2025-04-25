@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import listingRouter from "./router/listingroutes.js";
 import userRouter from "./router/userroutes.js";
+import bookingRouter from "./router/bookingroutes.js";
                                  
 
 
@@ -49,6 +50,7 @@ app.use(cors());
 //  Use Routers
 app.use(listingRouter);
 app.use(userRouter);
+app.use(bookingRouter);
 
 
 // listening port
