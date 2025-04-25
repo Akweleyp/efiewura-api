@@ -2,10 +2,10 @@ import { createTransport } from "nodemailer";
 import "dotenv/config";
 
 export const mailTransporter = createTransport({
-  // host: "smtp.gmail.com",
+  host: "smtp.gmail.com",
   // port: 587,
   // secure: false,
-  service: 'gmail',
+  // service: 'gmail',
   port: 587,
   secure: false,
   auth: {
@@ -13,6 +13,7 @@ export const mailTransporter = createTransport({
     pass: process.env.GMAIL_PASS_KEY,
   },
 });
+console.log("sending mail")
 
 // Dynamically generate email message 
 export const emailMessage = `

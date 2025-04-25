@@ -46,7 +46,7 @@ export const registerUser = async (req, res) => {
   await newUser.save();
 
   // Send registration confirmation email
-  await mailTransporter.sendMail({
+   mailTransporter.sendMail({
     from: process.env.USER_GMAIL,
     to: value.email,
     subject: "Welcome to Efiewura",
