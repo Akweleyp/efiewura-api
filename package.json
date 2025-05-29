@@ -11,7 +11,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cloudinary": "^1.41.3",
@@ -31,5 +30,14 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akweleyp/efiewura-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Akweleyp/efiewura-api/issues"
+  },
+  "homepage": "https://github.com/Akweleyp/efiewura-api#readme",
+  "description": ""
 }

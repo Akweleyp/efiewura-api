@@ -38,20 +38,15 @@ export const registerUser = async (req, res) => {
     password: hashedPassword,
   });
 
-  // Generate access token for user
-  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
-   return res.status(201).json({ newUser, token });
-
-  // Save user information in the database (not necessary to do this becasue of previous step)
-  await newUser.save();
-
-  // Send registration confirmation email
-   mailTransporter.sendMail({
+  // 
+    await mailTransporter.sendMail({
     from: process.env.USER_GMAIL,
     to: value.email,
-    subject: "Welcome to Efiewura",
-    html: emailMessage.replace("{{lastName}}", value.lastName)
-  })
+    subject:'Checking  out nodemiler ',
+    // text: ` Dear ${value.username}, \nA  new account has been created for you! \nThank you!`
+    html: registerUserTemplate.replace("{{username}}", value.username),
+
+  });
 
   //  Return response
   return res.status(201).json({message: "User registered successfully"})

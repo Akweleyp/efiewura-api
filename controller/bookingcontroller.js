@@ -49,3 +49,29 @@ export const scheduleBooking = async (req, res) => {
     });
   }
 };
+
+
+
+export const getBookings = async (req, res) => {
+  try {
+    const { filter = "{}", sort = "{}" } = req.query;
+
+    const result = await BookingModel.find({
+      ...JSON.parse(filter),
+      isDeleted: false,
+    }).sort(JSON.parse(sort));
+    if (result.length === 0) {
+      return res.status(404).json({ message: "No bookings found" });
+    }
+
+    return res.json({
+      message: "Here are your bookings",
+      data: result,
+    });
+  } catch (error) {
+    return res.json({
+      message: "Request unsuccessful, kindly reload the page ",
+      status: "error",
+    });
+  }
+};
